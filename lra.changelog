@@ -1,0 +1,63 @@
+TODO
+remove charging USB plug and charge from uno. Uno's vin pin is powered when we put voltage into 5v so we have nothing to detect Uno voltage
+swap TPS61200 for 7.5V booster and feed vin instead of 5v pin. We lose voltage through Uno's linear regulator but allow Uno to safely switch UNO USB off if our voltage present
+
+V.02
+add switch battery on/off
+silk size increased for readability
+move leds to 0805
+drv works just fine at 5v - remove all dividers and 2.8v regulator
+added pin 1 indicator for drv2603
+swapped motor OUT + - pins
+move usb and lipo connector
+created long variants for hand soldering of both qfn parts
+cleaned up tps61200 routing and layout
+remove resistors on vin, en and PS on tps61200
+solder selector on PS
+removed PWR led
+upgraded to UNO R3 shield pinout
+recalc UVLO for 3.2 re http://vvishnyakov.blogspot.co.uk/2013/02/documenting-hardware-bug-in-sparkfun.html
+
+V.01 (changes from Lipo 8/1/11)
+new layout
+move usb and lipo connector
+move to 0805s
+remove fuel cell
+remove 3v regulator, add 2.8v regulator
+remove proto area
+add drv circuits
+
+
+UVLO
+r3 =r4 x (vinmin) -1
+		   uvlo 
+
+
+uvlo = .250
+r4 ~ 250K
+vinmin = 3.2
+
+
+
+r4=250k
+r3 =2.95M
+
+
+OR 
+		   
+1  =1/r3 * (vinmin) -1
+r4			uvlo
+
+
+1/x = 1/2000000 * 3.2/.250 - 1
+
+1/x = 1/2000000 * 11.8
+
+
+r3 = 2M
+r4 = 169.5K
+
+or 
+
+r3=3M
+r4=254K
